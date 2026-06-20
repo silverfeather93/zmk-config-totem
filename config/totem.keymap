@@ -21,6 +21,13 @@
 #define SYM  2
 #define ADJ  3
 
+#define MTGAP 0
+#define QWERTY 1
+#define NAV 2
+#define NUM 3
+#define FUNC 4
+#define NOTHING 5
+
 &mt {
   quick-tap-ms = <100>;
   global-quick-tap;
