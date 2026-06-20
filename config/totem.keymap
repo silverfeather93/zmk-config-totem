@@ -16,6 +16,11 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
 
+#define BASE 0
+#define NAV  1
+#define SYM  2
+#define ADJ  3
+
 #define MTGAP 0
 #define QWERTY 1
 #define NAV 2
@@ -55,19 +60,28 @@
 // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 
                 mtgap_layer {
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  Y    |  P      |  O      |  U      |  J  |   |  K  |  D      |  L      |  C      |  W      | BKSP |
-            // | CTRL | gui(I)|  sft(N) |  ctl(E) |  alt(A) |  .  |   |  M  |  alt(H) |  ctl(T) |  sft(S) |  gui(R) |  '   |
-            // | SHFT |  Q    |  Z      |  ;      |  ,      |  '  |   |  B  |  F      |  G      |  V      |  X      | ESC  |
-            //                          | bksp    | NUM     | SPC |   | ENT | RSE     | ALT     |
+// ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+label= "MTGAP"                              ;
+// ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+//             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
+//             ┃     Q     ┃     W     ┃     F     ┃     P     ┃     G     ┃   ┃     J     ┃     L     ┃     U     ┃     Y     ┃     ;     ┃
+//             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
+//             ┃     A     ┃     R     ┃     S     ┃     T     ┃     D     ┃   ┃     H     ┃     N     ┃     E     ┃     I     ┃     O     ┃
+// ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
+// ┃           ┃     Z     ┃     X     ┃     C     ┃     V     ┃     B     ┃   ┃     K     ┃     M     ┃     ,     ┃     .     ┃     /     ┃           ┃
+// ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
+//                                     ┃           ┃    TAB    ┃    SPC    ┃   ┃   ENTER   ┃   BSPC    ┃           ┃
+//                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
+ bindings = <
+// ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
 
-            bindings = <
-        &kp Y       &lt NAV P    &lt NUM O    &kp U       &kp J        &kp K      &kp D       &lt NUM L    &lt NAV C    &kp W
-        &ht LGUI I  &ht LSHFT N  &ht LCTRL E  &ht LALT A  &kp DOT      &kp M      &ht LALT H  &ht LCTRL T  &ht LSHFT S  &ht LGUI R
-&kp Z   &kp Q       &kp Z        &kp SEMI     &kp COMMA   &kp SQT      &kp B      &kp F       &kp G        &kp V        &kp X       $kp ESC
-                                    &kp BKSP     &mo NUM     &kp ENTER    &kp SPACE  &mo NAV     &kp DEL
-            >;
-        };
+                &kp Q       &lt NAV W   &lt NUM E   &kp R       &kp T           &kp Y       &kp U       &lt NUM I   &lt NAV O   &kp P
+                &ht LGUI A  &ht LSHFT S &ht LCTRL D &ht LALT F  &kp G           &kp H       &ht LALT J  &ht LCTRL K &ht LSHFT L &ht LGUI SEMI
+    &kp Z       &kp Z       &kp X       &kp C       &kp V       &kp B           &kp N       &kp M       &kp COMMA   &kp DOT     &kp FSLH       $kp ESC
+                                        &kp BKSP    &mo NUM     &kp ENTER       &kp SPACE   &mo NAV     &kp DEL
+                        >;
+                };
+
 // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 
 
