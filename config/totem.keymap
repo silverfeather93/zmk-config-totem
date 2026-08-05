@@ -18,6 +18,7 @@
 #include <dt-bindings/zmk/mouse.h>
 
 / {
+
     conditional_layers {
         compatible = "zmk,conditional-layers";
 
@@ -26,9 +27,7 @@
             then-layer = <FUNC>;
         };
     };
-};
 
-/ {
     behaviors {
         ht: holdtap_tappreffered {
             compatible = "zmk,behavior-hold-tap";
